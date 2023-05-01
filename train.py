@@ -140,6 +140,8 @@ if __name__ == '__main__':
         from trainmodel.rnn import KAMP_RNN
         model = KAMP_RNN().to(device)
 
+    print(model)
+
     from torch.utils.data import TensorDataset
     from torch.utils.data import DataLoader
     import numpy as np
@@ -173,13 +175,6 @@ if __name__ == '__main__':
     valid_dataloader = DataLoader(valid, batch_size =len(x_valid), shuffle=False)
     test = TensorDataset(x_test, y_test)
     test_dataloader = DataLoader(test, batch_size =len(x_valid), shuffle=False)
-
-    train = TensorDataset(x_train, y_train)
-    train_dataloader = DataLoader(train, batch_size = 5000, shuffle=True)
-    valid = TensorDataset(x_valid, y_valid)
-    valid_dataloader = DataLoader(valid, batch_size = len(x_valid), shuffle=False)
-    test = TensorDataset(x_test, y_test)
-    test_dataloader = DataLoader(test, batch_size = len(x_valid), shuffle=False)
 
     a, b = train_model(model, args.criterion, torch.optim.Adam(model.parameters()), args.num_epochs, 
                        train_dataloader, 

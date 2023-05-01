@@ -4,6 +4,7 @@ import torch.nn as nn
 class KAMP_CNN(nn.Module):
   def __init__(self, layermode):
     super(KAMP_CNN, self).__init__()
+
     if layermode >= 0:
         self.conv1 = nn.Sequential(
             nn.Conv1d(in_channels=1, out_channels=100, kernel_size=2, stride=1, padding='same'),
